@@ -52,26 +52,26 @@ function SliderRow({ images, direction = 'right', orientation = 'portrait' }) {
 
   const duplicatedImages = [...images, ...images];
 
-  // Ukuran berdasarkan orientation
+  // Ukuran berdasarkan orientation dengan responsive breakpoints
   const sizeClass = orientation === 'portrait' 
-    ? 'w-72 h-[512px]'  // 9:16 ratio (288x512)
-    : 'w-[512px] h-72'; // 16:9 ratio (512x288)
+    ? 'w-48 h-[340px] sm:w-56 sm:h-[398px] md:w-64 md:h-[456px] lg:w-72 lg:h-[512px]'  // 9:16 ratio
+    : 'w-[340px] h-48 sm:w-[398px] sm:h-56 md:w-[456px] md:h-64 lg:w-[512px] lg:h-72'; // 16:9 ratio
 
   return (
     <div 
       ref={scrollRef}
-      className="flex gap-6 overflow-x-hidden scrollbar-hide"
+      className="flex gap-3 sm:gap-4 md:gap-5 lg:gap-6 overflow-x-hidden scrollbar-hide"
       style={{ scrollBehavior: 'auto' }}
     >
       {duplicatedImages.map((image, index) => (
         <div 
           key={`${image.id}-${index}`}
-          className={`shrink-0 ${sizeClass} rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 group`}
+          className={`shrink-0 ${sizeClass} rounded-lg sm:rounded-xl overflow-hidden shadow-md sm:shadow-lg hover:shadow-xl sm:hover:shadow-2xl transition-shadow duration-300 group`}
         >
           <img 
             src={image.src}
             alt={image.alt}
-            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 bg-gray-100"
+            className="w-full h-full object-cover group-hover:scale-105 sm:group-hover:scale-110 transition-transform duration-500 bg-gray-100"
             onError={(e) => {
               e.target.src = `data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="320" height="384"%3E%3Crect fill="%23e5e7eb" width="320" height="384"/%3E%3Ctext fill="%236b7280" x="50%25" y="50%25" dominant-baseline="middle" text-anchor="middle" font-family="sans-serif" font-size="18"%3E${image.alt}%3C/text%3E%3C/svg%3E`;
             }}
@@ -89,13 +89,13 @@ export default function ImageSlider() {
   const secondRowImages = sliderImages.slice(midPoint);
 
   return (
-    <section className="py-20 bg-white overflow-hidden">
-      <div className="mb-12 text-center px-4">
-        <h2 className="text-4xl md:text-5xl font-bold mb-4">Recent Works</h2>
-        <p className="text-gray-600 text-lg">A glimpse of my latest photography projects</p>
+    <section className="py-12 sm:py-16 md:py-20 bg-white overflow-hidden">
+      <div className="mb-8 sm:mb-10 md:mb-12 text-center px-4">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-2 sm:mb-3 md:mb-4">Recent Works</h2>
+        <p className="text-gray-600 text-base sm:text-lg">A glimpse of my latest photography projects</p>
       </div>
 
-      <div className="space-y-6">
+      <div className="space-y-4 sm:space-y-5 md:space-y-6">
         {/* Row 1: Portrait - Scroll ke Kanan */}
         <SliderRow images={firstRowImages} direction="right" orientation="portrait" />
         

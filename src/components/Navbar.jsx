@@ -37,7 +37,7 @@ export default function Navbar({ scrollToSection }) {
                 <img
                   src="/logo.png"
                   alt="Logo"
-                  className="w-30 h-30 object-contain" // ubah ukuran sesuai kebutuhan
+                  className="w-25 h-25 object-contain" // ubah ukuran sesuai kebutuhan
                   onError={(e) => {
                     e.currentTarget.style.display = "none";
                   }}
@@ -61,7 +61,7 @@ export default function Navbar({ scrollToSection }) {
               {/* CTA */}
               <button
                 onClick={() => handleNav("contact")}
-                className="ml-2 inline-block rounded-full px-4 py-2 text-sm font-semibold bg-linear-to-r from-indigo-500 to-teal-400 text-white shadow-md hover:opacity-95 transition"
+                className="ml-2 inline-block rounded-full px-4 py-2 text-sm font-semibold bg-linear-to-r from-gray-900 to-gray-500 text-white shadow-md hover:opacity-95 transition"
               >
                 Book Now
               </button>
@@ -102,15 +102,10 @@ export default function Navbar({ scrollToSection }) {
                 onClick={() => handleNav("preset")}
                 className="w-full mt-1 text-left px-3 py-2 rounded bg-linear-to-r from-indigo-500 to-teal-400 text-white font-semibold"
               >
-                Try Preset
+                Book Now
               </button>
 
-              <div className="pt-2 border-t border-gray-100 text-sm text-gray-500">
-                <div className="py-2">
-                  Follow me on Instagram:{" "}
-                  <span className="font-medium text-gray-700">@alex</span>
-                </div>
-              </div>
+
             </div>
           </div>
         )}

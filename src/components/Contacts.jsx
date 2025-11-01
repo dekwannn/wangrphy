@@ -1,133 +1,182 @@
-import React, { useState } from 'react';
-import { Instagram, MessageCircle, Mail, Phone, MapPin, Send } from 'lucide-react';
+import React, { useState, useEffect } from "react";
+import { Instagram, MessageCircle } from "lucide-react";
 
 export default function ContactSection() {
   const [isHovered, setIsHovered] = useState(false);
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
 
-  // Stack gambar - hanya 3 untuk efek yang lebih clean
+  useEffect(() => {
+    // deteksi layar sentuh supaya kita bisa menonaktifkan 'hover' yang
+    // tidak berguna di mobile dan menyediakan interaksi ketuk.
+    if (typeof window !== "undefined") {
+      setIsTouchDevice(
+        "ontouchstart" in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0
+      );
+    }
+  }, []);
+
+  // gunakan satuan relatif (vw/vh) agar proporsinya mengikuti ukuran layar
   const stackImages = [
-    { id: 1, src: '/slider/potrait/potrait9.jpg', stackPos: { x: '0px', y: '0px', rotate: '0deg' }, spreadPos: { x: '-180px', y: '-40px', rotate: '-8deg' } },
-    { id: 2, src: '/slider/potrait/potrait4.jpg', stackPos: { x: '0px', y: '12px', rotate: '3deg' }, spreadPos: { x: '0px', y: '0px', rotate: '0deg' } },
-    { id: 3, src: '/slider/potrait/potrait3.jpg', stackPos: { x: '0px', y: '24px', rotate: '6deg' }, spreadPos: { x: '180px', y: '-40px', rotate: '8deg' } }
+    {
+      id: 1,
+      src: "/slider/potrait/potrait9.jpg",
+      stackPos: { x: "0vw", y: "0vh", rotate: "0deg" },
+      spreadPos: { x: "-18vw", y: "-4vh", rotate: "-6deg" }
+    },
+    {
+      id: 2,
+      src: "/slider/potrait/potrait4.jpg",
+      stackPos: { x: "0vw", y: "1.5vh", rotate: "3deg" },
+      spreadPos: { x: "0vw", y: "0vh", rotate: "0deg" }
+    },
+    {
+      id: 3,
+      src: "/slider/potrait/potrait3.jpg",
+      stackPos: { x: "0vw", y: "3vh", rotate: "6deg" },
+      spreadPos: { x: "18vw", y: "-4vh", rotate: "6deg" }
+    }
   ];
 
   const contactInfo = {
-    whatsapp: '+6281239739506', // Ganti dengan nomor WA Anda
-    instagram: '@wangrphy', // Ganti dengan username IG Anda
-    email: 'kdwidiadnyana@gmail.com',
-    phone: '+6281239739506',
-    location: 'Singaraja, Bali'
+    whatsapp: "+6281239739506",
+    instagram: "@wangrphy",
+    email: "kdwidiadnyana@gmail.com",
+    phone: "+6281239739506",
+    location: "Singaraja, Bali"
   };
 
   const handleWhatsApp = () => {
-    window.open(`https://wa.me/${contactInfo.whatsapp.replace(/[^0-9]/g, '')}?text=Hi! I'm interested in your photography services`, '_blank');
+    const num = contactInfo.whatsapp.replace(/[^0-9]/g, "");
+    window.open(`https://wa.me/${num}?text=Hi! I'm interested in your photography services`, "_blank");
   };
 
   const handleInstagram = () => {
-    window.open(`https://instagram.com/${contactInfo.instagram.replace('@', '')}`, '_blank');
+    window.open(`https://instagram.com/${contactInfo.instagram.replace("@", "")}`, "_blank");
+  };
+
+  // Toggle untuk mobile (ketuk sekali untuk buka, ketuk lagi untuk tutup)
+  const handleMobileToggle = () => {
+    if (isTouchDevice) setIsHovered((s) => !s);
+  };
+
+  // Keyboard accessibility: Enter / Space toggles "hover"
+  const handleKeyDownToggle = (e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      setIsHovered((s) => !s);
+    }
   };
 
   return (
-    <section id="contact" className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100 py-20">
+    <section
+      id="contact"
+      className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100 py-12"
+    >
       <div className="max-w-7xl mx-auto px-4 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          
-          {/* Left Side - Stacked Images */}
-          <div className="order-2 lg:order-1 relative">
-            <div 
-              className="relative h-[600px] flex items-center justify-center cursor-pointer"
-              onMouseEnter={() => setIsHovered(true)}
-              onMouseLeave={() => setIsHovered(false)}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          {/* Left - Images */}
+          <div className="relative order-1 lg:order-1 flex justify-center">
+            <div
+              role={isTouchDevice ? "button" : undefined}
+              tabIndex={0}
+              aria-label="Gallery preview"
+              onClick={handleMobileToggle}
+              onTouchStart={isTouchDevice ? handleMobileToggle : undefined}
+              onKeyDown={handleKeyDownToggle}
+              onMouseEnter={() => !isTouchDevice && setIsHovered(true)}
+              onMouseLeave={() => !isTouchDevice && setIsHovered(false)}
+              className="relative w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg"
             >
-              {stackImages.map((image, index) => {
-                const pos = isHovered ? image.spreadPos : image.stackPos;
-                
-                return (
-                  <div
-                    key={image.id}
-                    className="absolute w-72 h-96 rounded-2xl overflow-hidden shadow-2xl transition-all duration-700 ease-out"
-                    style={{
-                      transform: `translateX(${pos.x}) translateY(${pos.y}) rotate(${pos.rotate}) ${isHovered ? 'scale(1)' : 'scale(0.95)'}`,
-                      zIndex: isHovered ? index + 1 : stackImages.length - index
-                    }}
-                  >
-                    <img 
-                      src={image.src}
-                      alt={`Contact stack ${image.id}`}
-                      className="w-full h-full object-cover"
-                      onError={(e) => {
-                        e.target.src = `data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="288" height="384"%3E%3Crect fill="%23${['6366f1', 'ec4899', 'f59e0b'][index]}" width="288" height="384"/%3E%3Ctext fill="white" x="50%25" y="50%25" dominant-baseline="middle" text-anchor="middle" font-family="sans-serif" font-size="20" font-weight="bold"%3EPhoto ${image.id}%3C/text%3E%3C/svg%3E`;
+              {/* container height berubah sesuai viewport */}
+              <div className="relative h-[36vh] sm:h-[44vh] md:h-[52vh] lg:h-[60vh] flex items-center justify-center">
+                {stackImages.map((image, index) => {
+                  const pos = isHovered ? image.spreadPos : image.stackPos;
+                  // saat tidak hover, sedikit mengecil untuk efek stacked
+                  const scale = isHovered ? 1 : 0.96;
+                  // zIndex agar tumpukan tetap rapi pada desktop & mobile
+                  const zIdx = isHovered ? index + 10 : stackImages.length - index + 10;
+
+                  return (
+                    <div
+                      key={image.id}
+                      className="absolute rounded-2xl overflow-hidden shadow-2xl transition-all duration-700 ease-out will-change-transform"
+                      style={{
+                        width: "min(24rem, 52%)", // responsif: batasi lebar kartu
+                        aspectRatio: "3/4",
+                        transform: `translateX(${pos.x}) translateY(${pos.y}) rotate(${pos.rotate}) scale(${scale})`,
+                        zIndex: zIdx
                       }}
-                    />
-                    
-                    {/* Overlay hint */}
-                    {!isHovered && index === stackImages.length - 1 && (
-                      <div className="absolute inset-0 bg-black/30 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
-                        <p className="text-white font-semibold text-lg">Hover to explore</p>
-                      </div>
-                    )}
-                  </div>
-                );
-              })}
+                    >
+                      <img
+                        src={image.src}
+                        alt={`Photo ${image.id}`}
+                        loading="lazy"
+                        className="w-full h-full object-cover block"
+                        onError={(e) => {
+                          // fallback SVG kecil bila gambar hilang
+                          const colors = ["6366f1", "ec4899", "f59e0b"];
+                          e.currentTarget.src = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='800'%3E%3Crect width='100%25' height='100%25' fill='%23${colors[index]}' /%3E%3Ctext x='50%25' y='50%25' font-family='sans-serif' font-size='28' fill='white' text-anchor='middle' dominant-baseline='middle'%3EPhoto ${image.id}%3C/text%3E%3C/svg%3E`;
+                        }}
+                      />
+
+                      {/* Overlay hint hanya tampil pada desktop ketika tidak di-hover */}
+                      {!isHovered && index === stackImages.length - 1 && !isTouchDevice && (
+                        <div className="absolute inset-0 bg-black/30 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
+                          <p className="text-white font-semibold text-lg">Hover to explore</p>
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+
+              {/* dekorasi blur - pos relatif agar tak memotong konten di mobile */}
+              <div className="absolute -top-6 -right-6 w-32 h-32 bg-indigo-200 rounded-full blur-3xl opacity-50 -z-10 hidden sm:block"></div>
+              <div className="absolute -bottom-6 -left-6 w-28 h-28 bg-pink-200 rounded-full blur-3xl opacity-50 -z-10 hidden sm:block"></div>
             </div>
-            
-            {/* Decorative circles */}
-            <div className="absolute -top-10 -right-10 w-40 h-40 bg-indigo-200 rounded-full blur-3xl opacity-50 -z-10"></div>
-            <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-pink-200 rounded-full blur-3xl opacity-50 -z-10"></div>
           </div>
 
-          {/* Right Side - Contact Info & CTA */}
-          <div className="order-1 lg:order-2 space-y-8">
+          {/* Right - teks & CTA */}
+          <div className="order-2 lg:order-2 space-y-6">
             <div>
-              <p className="text-indigo-600 font-semibold mb-2 text-lg">Let's Work Together</p>
-              <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+              <p className="text-indigo-600 font-semibold mb-2 text-base sm:text-lg">Let's Work Together</p>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight">
                 Contact Me!
               </h2>
-              <p className="text-xl text-gray-600 leading-relaxed">
-                Whether it's a wedding, portrait session, or commercial project, I'm here to bring your vision to life. Let's create something beautiful together.
+              <p className="text-base sm:text-lg text-gray-600 leading-relaxed">
+                Whether it's a wedding, portrait session, or commercial project, I'm here to bring your vision to
+                life. Let's create something beautiful together.
               </p>
             </div>
 
-            {/* Primary CTA Buttons */}
+            {/* CTA: tombol full width di mobile, inline di desktop */}
             <div className="flex flex-col sm:flex-row gap-4">
               <button
                 onClick={handleWhatsApp}
-                className="flex items-center justify-center gap-3 px-6 py-3 bg-black text-white rounded-xl hover:bg-gray-800 transition font-semibold text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                className="w-full sm:w-auto flex-1 flex items-center justify-center gap-3 px-5 py-3 bg-black text-white rounded-xl hover:bg-gray-800 transition font-semibold text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                aria-label="Chat on WhatsApp"
               >
-                <MessageCircle className="w-6 h-6" />
+                <MessageCircle className="w-5 h-5" />
                 Chat on WhatsApp
               </button>
-              
+
               <button
                 onClick={handleInstagram}
-                className="flex items-center justify-center gap-3 px-6 py-3 border-2 border-gray-900 rounded-xl hover:opacity-100 transition font-semibold text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                className="w-full sm:w-auto flex-1 flex items-center justify-center gap-3 px-5 py-3 border-2 border-gray-900 rounded-xl hover:opacity-95 transition font-semibold text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 bg-white"
+                aria-label="Follow on Instagram"
               >
-                <Instagram className="w-6 h-6" />
+                <Instagram className="w-5 h-5" />
                 Follow on Instagram
               </button>
             </div>
 
-           
-
-            {/* Social Proof */}
-            {/* <div className="flex items-center gap-8 pt-4">
-              <div>
-                <p className="text-3xl font-bold text-gray-900">500+</p>
-                <p className="text-gray-600 text-sm">Happy Clients</p>
-              </div>
-              <div className="h-12 w-px bg-gray-300"></div>
-              <div>
-                <p className="text-3xl font-bold text-gray-900">1000+</p>
-                <p className="text-gray-600 text-sm">Projects Done</p>
-              </div>
-              <div className="h-12 w-px bg-gray-300"></div>
-              <div>
-                <p className="text-3xl font-bold text-gray-900">5★</p>
-                <p className="text-gray-600 text-sm">Average Rating</p>
-              </div>
+            {/* optional: contact details kecil
+            <div className="pt-2 text-sm text-gray-600">
+              <p className="truncate"><strong>Email:</strong> {contactInfo.email}</p>
+              <p className="truncate"><strong>Phone:</strong> {contactInfo.phone}</p>
+              <p className="truncate"><strong>Location:</strong> {contactInfo.location}</p>
             </div> */}
           </div>
-
         </div>
       </div>
     </section>

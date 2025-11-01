@@ -21,7 +21,7 @@ export default function App() {
       <Hero scrollToSection={scrollToSection} />
       <ImageSlider />
       <PortfolioGrid />
-      <PresetTester />
+      {/* <PresetTester /> */}
        <ContactSection />
       <Footer />
     </div>
