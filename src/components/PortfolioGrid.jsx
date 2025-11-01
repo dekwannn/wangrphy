@@ -64,6 +64,65 @@ const portfolioData = [
       { id: '3k', src: '/collections/widia/widia (10).jpg', caption: 'Widia Graduation' },
     ]
   },
+  { 
+    id: 4, 
+    title: 'Lina Graduation - Panji Sakti', 
+    category: 'Graduation',
+    coverImage: '/collections/lina/lina (9).jpg',
+    images: [
+      { id: '4a', src: '/collections/lina/lina (9).jpg', caption: 'Lina Graduation' },
+      { id: '4b', src: '/collections/lina/lina (1).jpg', caption: 'Lina Graduation' },
+      { id: '4c', src: '/collections/lina/lina (2).jpg', caption: 'Lina Graduation' },
+      { id: '4d', src: '/collections/lina/lina (3).jpg', caption: 'Lina Graduation' },
+      { id: '4e', src: '/collections/lina/lina (4).jpg', caption: 'Lina Graduation' },
+      { id: '4f', src: '/collections/lina/lina (5).jpg', caption: 'Lina Graduation' },
+      { id: '4g', src: '/collections/lina/lina (6).jpg', caption: 'Lina Graduation' },
+      { id: '4h', src: '/collections/lina/lina (7).jpg', caption: 'Lina Graduation' },
+      { id: '4i', src: '/collections/lina/lina (8).jpg', caption: 'Lina Graduation' },
+      { id: '4j', src: '/collections/lina/lina (10).jpg', caption: 'Lina Graduation' },
+    ]
+  },
+  { 
+    id: 5, 
+    title: 'Elsa Graduation - Pansophia', 
+    category: 'Graduation',
+    coverImage: '/collections/elsa/elsa (1).jpg',
+    images: [
+      { id: '5a', src: '/collections/elsa/elsa (1).jpg', caption: 'Elsa Graduation' },
+      { id: '5b', src: '/collections/elsa/elsa (2).jpg', caption: 'Elsa Graduation' },
+      { id: '5c', src: '/collections/elsa/elsa (3).jpg', caption: 'Elsa Graduation' },
+      { id: '5d', src: '/collections/elsa/elsa (4).jpg', caption: 'Elsa Graduation' },
+      { id: '5e', src: '/collections/elsa/elsa (5).jpg', caption: 'Elsa Graduation' },
+      // { id: '5f', src: '/collections/elsa/elsa (6).jpg', caption: 'Elsa Graduation' },
+      { id: '5g', src: '/collections/elsa/elsa (7).jpg', caption: 'Elsa Graduation' },
+      // { id: '5h', src: '/collections/elsa/elsa (8).jpg', caption: 'Elsa Graduation' },
+      { id: '5i', src: '/collections/elsa/elsa (9).jpg', caption: 'Elsa Graduation' },
+      { id: '5j', src: '/collections/elsa/elsa (10).jpg', caption: 'Elsa Graduation' },
+      { id: '5k', src: '/collections/elsa/elsa (11).jpg', caption: 'Elsa Graduation' },
+      { id: '5l', src: '/collections/elsa/elsa (12).jpg', caption: 'Elsa Graduation' },
+      { id: '5m', src: '/collections/elsa/elsa (13).jpg', caption: 'Elsa Graduation' },
+      { id: '5n', src: '/collections/elsa/elsa (14).jpg', caption: 'Elsa Graduation' },
+    ]
+  },
+  { 
+    id: 6, 
+    title: 'Abel Graduation - Pansophia', 
+    category: 'Graduation',
+    coverImage: '/collections/abel/abel (10).jpg',
+    images: [
+      { id: '3a', src: '/collections/abel/abel (10).jpg', caption: 'Abel Graduation' },
+      { id: '3a', src: '/collections/abel/abel (1).jpg', caption: 'Abel Graduation' },
+      { id: '3a', src: '/collections/abel/abel (2).jpg', caption: 'Abel Graduation' },
+      { id: '3a', src: '/collections/abel/abel (3).jpg', caption: 'Abel Graduation' },
+      { id: '3a', src: '/collections/abel/abel (4).jpg', caption: 'Abel Graduation' },
+      { id: '3a', src: '/collections/abel/abel (5).jpg', caption: 'Abel Graduation' },
+      { id: '3a', src: '/collections/abel/abel (6).jpg', caption: 'Abel Graduation' },
+      { id: '3a', src: '/collections/abel/abel (7).jpg', caption: 'Abel Graduation' },
+      { id: '3a', src: '/collections/abel/abel (8).jpg', caption: 'Abel Graduation' },
+      { id: '3a', src: '/collections/abel/abel (9).jpg', caption: 'Abel Graduation' },
+      { id: '3a', src: '/collections/abel/abel (11).jpg', caption: 'Abel Graduation' },
+    ]
+  },
 ];
 
 export default function PortfolioGrid() {
@@ -207,12 +266,12 @@ export default function PortfolioGrid() {
               <ChevronLeft className="w-6 h-6" />
             </button>
 
-            <div className="max-w-6xl w-full" onClick={(e) => e.stopPropagation()}>
+            <div className="max-w-2xl w-full" onClick={(e) => e.stopPropagation()}>
               <div className="bg-white/5 backdrop-blur-sm rounded-3xl p-2 shadow-2xl">
                 <img 
                   src={selectedAlbum.images[currentImageIndex].src}
                   alt={selectedAlbum.images[currentImageIndex].caption}
-                  className="w-full h-auto max-h-[65vh] object-cover rounded-2xl"
+                  className="w-full h-auto max-h-[65vh] object-cover lg:object-contain rounded-2xl"
                 />
               </div>
               <div className="text-center mt-4">

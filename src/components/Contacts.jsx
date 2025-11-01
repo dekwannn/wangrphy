@@ -19,7 +19,7 @@ export default function ContactSection() {
   const stackImages = [
     {
       id: 1,
-      src: "/slider/potrait/potrait9.jpg",
+      src: "/collections/nila/nila (23).jpg",
       stackPos: { x: "0vw", y: "0vh", rotate: "0deg" },
       spreadPos: { x: "-18vw", y: "-4vh", rotate: "-6deg" }
     },

@@ -100,7 +100,7 @@ export default function Navbar({ scrollToSection }) {
 
               <button
                 onClick={() => handleNav("preset")}
-                className="w-full mt-1 text-left px-3 py-2 rounded bg-linear-to-r from-indigo-500 to-teal-400 text-white font-semibold"
+                className="w-full mt-1 text-left px-3 py-2 rounded bg-linear-to-r from-black to-gray-500 text-white font-semibold"
               >
                 Book Now
               </button>
