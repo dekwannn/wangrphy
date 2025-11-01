@@ -4,80 +4,64 @@ import { X, ZoomIn, ChevronLeft, ChevronRight, Grid3x3 } from 'lucide-react';
 const portfolioData = [
   { 
     id: 1, 
-    title: 'Urban Architecture', 
-    category: 'Architecture',
-    coverImage: 'https://images.unsplash.com/photo-1486718448742-163732cd1544?w=800&h=600&fit=crop',
+    title: 'Lora Graduation - STAHN', 
+    category: 'Graduation',
+    coverImage: '/slider/landscape/landscape1.jpg',
     images: [
-      { id: '1a', src: 'https://images.unsplash.com/photo-1486718448742-163732cd1544?w=800&h=600&fit=crop', caption: 'Modern building facade' },
-      { id: '1b', src: 'https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=800&h=600&fit=crop', caption: 'Glass and steel structure' },
-      { id: '1c', src: 'https://images.unsplash.com/photo-1511818966892-d7d671e672a2?w=800&h=600&fit=crop', caption: 'Interior architecture' },
-      { id: '1d', src: 'https://images.unsplash.com/photo-1479839672679-a46483c0e7c8?w=800&h=600&fit=crop', caption: 'Architectural details' },
-      { id: '1e', src: 'https://images.unsplash.com/photo-1512341689857-198e7e2f3ca8?w=800&h=600&fit=crop', caption: 'Urban skyline' },
+      { id: '1a', src: '/collections/lola/lola (1).jpg', caption: 'Lora Graduation' },
+      { id: '1b', src: '/collections/lola/lora (6).jpg', caption: 'Lora Graduation' },
+      { id: '1c', src: '/collections/lola/lola (3).jpg', caption: 'Lora Graduation' },
+      { id: '1d', src: '/collections/lola/lola (4).jpg', caption: 'Lora Graduation' },
+      { id: '1e', src: '/collections/lola/lola (5).jpg', caption: 'Lora Graduation' },
+      { id: '1f', src: '/collections/lola/lora (7).jpg', caption: 'Lora Graduation' },
+      { id: '1g', src: '/collections/lola/lora (8).jpg', caption: 'Lora Graduation' },
+     
     ]
   },
   { 
     id: 2, 
-    title: 'Natural Landscapes', 
-    category: 'Landscape',
-    coverImage: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop',
+    title: 'Nila Graduation - Undiksha', 
+    category: 'Graduation',
+    coverImage: '/collections/nila/nila (25).jpg',
     images: [
-      { id: '2a', src: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop', caption: 'Mountain peaks at sunset' },
-      { id: '2b', src: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop', caption: 'Valley view' },
-      { id: '2c', src: 'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=800&h=600&fit=crop', caption: 'Forest pathway' },
-      { id: '2d', src: 'https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?w=800&h=600&fit=crop', caption: 'Wildflower meadow' },
-      { id: '2e', src: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&h=600&fit=crop', caption: 'Misty mountains' },
-      { id: '2f', src: 'https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=800&h=600&fit=crop', caption: 'Desert landscape' },
+      { id: '2a', src: '/collections/nila/nila (25).jpg', caption: 'Nila Graduation' },
+      { id: '2d', src: '/collections/nila/nila (3).jpg', caption: 'Nila Graduation' },
+      { id: '2i', src: '/collections/nila/nila (8).jpg', caption: 'Nila Graduation' },
+      { id: '2j', src: '/collections/nila/nila (9).jpg', caption: 'Nila Graduation' },
+      { id: '2k', src: '/collections/nila/nila (10).jpg', caption: 'Nila Graduation' },
+      { id: '2l', src: '/collections/nila/nila (11).jpg', caption: 'Nila Graduation' },
+      { id: '2m', src: '/collections/nila/nila (12).jpg', caption: 'Nila Graduation' },
+      { id: '2n', src: '/collections/nila/nila (13).jpg', caption: 'Nila Graduation' },
+      { id: '2o', src: '/collections/nila/nila (14).jpg', caption: 'Nila Graduation' },
+      { id: '2p', src: '/collections/nila/nila (15).jpg', caption: 'Nila Graduation' },
+      { id: '2q', src: '/collections/nila/nila (16).jpg', caption: 'Nila Graduation' },
+      { id: '2r', src: '/collections/nila/nila (17).jpg', caption: 'Nila Graduation' },
+      { id: '2s', src: '/collections/nila/nila (18).jpg', caption: 'Nila Graduation' },
+      { id: '2t', src: '/collections/nila/nila (19).jpg', caption: 'Nila Graduation' },
+      { id: '2u', src: '/collections/nila/nila (20).jpg', caption: 'Nila Graduation' },
+      { id: '2v', src: '/collections/nila/nila (21).jpg', caption: 'Nila Graduation' },
+      { id: '2w', src: '/collections/nila/nila (22).jpg', caption: 'Nila Graduation' },
+      { id: '2x', src: '/collections/nila/nila (23).jpg', caption: 'Nila Graduation' },
+      { id: '2y', src: '/collections/nila/nila (24).jpg', caption: 'Nila Graduation' },
+      
     ]
   },
   { 
     id: 3, 
-    title: 'Street Photography', 
-    category: 'Street',
-    coverImage: 'https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=800&h=600&fit=crop',
+    title: 'Widia Graduation - HI', 
+    category: 'Graduation',
+    coverImage: '/collections/widia/widia (9).jpg',
     images: [
-      { id: '3a', src: 'https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=800&h=600&fit=crop', caption: 'City lights at night' },
-      { id: '3b', src: 'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=800&h=600&fit=crop', caption: 'Urban street scene' },
-      { id: '3c', src: 'https://images.unsplash.com/photo-1514565131-fce0801e5785?w=800&h=600&fit=crop', caption: 'Bustling marketplace' },
-      { id: '3d', src: 'https://images.unsplash.com/photo-1496568816309-51d7c20e3b21?w=800&h=600&fit=crop', caption: 'Alleyway perspective' },
-    ]
-  },
-  { 
-    id: 4, 
-    title: 'Portrait Series', 
-    category: 'Portrait',
-    coverImage: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=800&h=600&fit=crop',
-    images: [
-      { id: '4a', src: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=800&h=600&fit=crop', caption: 'Natural light portrait' },
-      { id: '4b', src: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=800&h=600&fit=crop', caption: 'Studio portrait' },
-      { id: '4c', src: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=600&fit=crop', caption: 'Urban portrait' },
-      { id: '4d', src: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=800&h=600&fit=crop', caption: 'Environmental portrait' },
-      { id: '4e', src: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=800&h=600&fit=crop', caption: 'Casual portrait' },
-    ]
-  },
-  { 
-    id: 5, 
-    title: 'Wildlife Collection', 
-    category: 'Wildlife',
-    coverImage: 'https://images.unsplash.com/photo-1484406566174-9da000fda645?w=800&h=600&fit=crop',
-    images: [
-      { id: '5a', src: 'https://images.unsplash.com/photo-1484406566174-9da000fda645?w=800&h=600&fit=crop', caption: 'Bird in flight' },
-      { id: '5b', src: 'https://images.unsplash.com/photo-1564349683136-77e08dba1ef7?w=800&h=600&fit=crop', caption: 'Lion portrait' },
-      { id: '5c', src: 'https://images.unsplash.com/photo-1535083783855-76ae62b2914e?w=800&h=600&fit=crop', caption: 'Deer in forest' },
-      { id: '5d', src: 'https://images.unsplash.com/photo-1474511320723-9a56873867b5?w=800&h=600&fit=crop', caption: 'Fox in nature' },
-      { id: '5e', src: 'https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?w=800&h=600&fit=crop', caption: 'Elephant herd' },
-      { id: '5f', src: 'https://images.unsplash.com/photo-1437622368342-7a3d73a34c8f?w=800&h=600&fit=crop', caption: 'Peacock display' },
-    ]
-  },
-  { 
-    id: 6, 
-    title: 'Wedding Moments', 
-    category: 'Wedding',
-    coverImage: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=800&h=600&fit=crop',
-    images: [
-      { id: '6a', src: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=800&h=600&fit=crop', caption: 'Ceremony moment' },
-      { id: '6b', src: 'https://images.unsplash.com/photo-1606800052052-a08af7148866?w=800&h=600&fit=crop', caption: 'Wedding details' },
-      { id: '6c', src: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=800&h=600&fit=crop', caption: 'Reception celebration' },
-      { id: '6d', src: 'https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=800&h=600&fit=crop', caption: 'Couple portrait' },
+      { id: '3a', src: '/collections/widia/widia (9).jpg', caption: 'Widia Graduation' },
+      { id: '3b', src: '/collections/widia/widia (1).jpg', caption: 'Widia Graduation' },
+      { id: '3c', src: '/collections/widia/widia (2).jpg', caption: 'Widia Graduation' },
+      { id: '3d', src: '/collections/widia/widia (3).jpg', caption: 'Widia Graduation' },
+      { id: '3f', src: '/collections/widia/widia (4).jpg', caption: 'Widia Graduation' },
+      { id: '3g', src: '/collections/widia/widia (5).jpg', caption: 'Widia Graduation' },
+      { id: '3h', src: '/collections/widia/widia (6).jpg', caption: 'Widia Graduation' },
+      { id: '3i', src: '/collections/widia/widia (7).jpg', caption: 'Widia Graduation' },
+      { id: '3j', src: '/collections/widia/widia (8).jpg', caption: 'Widia Graduation' },
+      { id: '3k', src: '/collections/widia/widia (10).jpg', caption: 'Widia Graduation' },
     ]
   },
 ];
@@ -228,7 +212,7 @@ export default function PortfolioGrid() {
                 <img 
                   src={selectedAlbum.images[currentImageIndex].src}
                   alt={selectedAlbum.images[currentImageIndex].caption}
-                  className="w-full h-auto max-h-[65vh] object-contain rounded-2xl"
+                  className="w-full h-auto max-h-[65vh] object-cover rounded-2xl"
                 />
               </div>
               <div className="text-center mt-4">
